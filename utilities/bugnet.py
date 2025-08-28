@@ -96,7 +96,7 @@ class Bugnet:
             self.filternet.eval()
                           
     def grab_insects(self,file):                                                #for list of frames, localize insects, classify insects, store images and predictions
-        if True:
+        try:
             if type(file) is str:
                 self.file_name='.'.join(file.split('/')[-1].split('.')[:-1])    #ugly
                 self.frame=fix_rotation(cv2.imread(file))                       #standardize rotation
@@ -110,8 +110,6 @@ class Bugnet:
                 t*=factor     
                 
             with torch.no_grad():
-                print(self.crop)
-                print()
                 if self.crop:                                                   #set to crop out objects
                     self.boxes_s=self.yolo(self.frame,size=(int(dim[0]*factor),  int(dim[1]*factor)))   #smallest pass
                     self.boxes_m=self.yolo(self.frame,size=(int(dim[0]*factor/8),int(dim[1]*factor/8))) #largest pass
@@ -119,8 +117,6 @@ class Bugnet:
                     if self.sizes[0]: t=0                                       #just big thresh
                     if self.sizes[1]: t=9999**2                                 #just small thresh
 
-                    print(t)
-                    print()
                     self.small  = [((b[0]),(b[1]),(b[2]),(b[3]),b[4]) for ind,box in enumerate(self.boxes_s.xyxy) for b in box if area(b)<t*t]
                     self.medium = [((b[0]),(b[1]),(b[2]),(b[3]),b[4]) for ind,box in enumerate(self.boxes_m.xyxy) for b in box if area(b)>t*t] #using medium and big interchangably here, sorry
             
@@ -163,8 +159,8 @@ class Bugnet:
                 else:
                     self.prediction = None
                             
-        #except Exception as e:
-         #   print('error:',e)
-          #  self.prediction=None
-           # with open(self.errors,'a') as log:
-            #    log.write(f'{time.time()} {file} {e}\n')
+        except Exception as e:
+            print('error:',e)
+            self.prediction=None
+            with open(self.errors,'a') as log:
+                log.write(f'{time.time()} {file} {e}\n')
