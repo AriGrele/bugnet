@@ -1,0 +1,2 @@
+if not defined in_subprocess (cmd /k set in_subprocess=y ^& %0 %*) & exit )
+scrape_gbif.py --getdata --getimages --trim --dst "../data/database_pipeline" --yolo_weights ../data/models/yolo5_m.pt --full_weights "../data/models/uncropped_gbif_image_classifier.pt" --enet_weights "../data/models/cropped_gbif_image_classifier.pt" --coord (-3.1190,-60.0217) --spprange 0.001 --genrange 0.005 --cap 1000 

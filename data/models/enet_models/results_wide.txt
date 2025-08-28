@@ -1,0 +1,1 @@
+epoch level train.loss train.accuracy val.loss val.accuracy
