@@ -1,10 +1,10 @@
-#Web scraping
+# Web scraping
 
-##scrape_gbif.py
+## scrape_gbif.py
 
 Main python script for scraping data from GBIF. Allows downloading of data only, images, summarizing taxon richness for GBIF downloads, and combinations thereof. 
 
-##Example useage:
+## Example useage:
 
 ```
 scrape_gbif.py --getdata --getimages --trim --dst "../data/database_pipeline" --yolo_weights ../data/models/yolo5_m.pt --full_weights "../data/models/uncropped_gbif_image_classifier.pt" --enet_weights "../data/models/cropped_gbif_image_classifier.pt" --coord (-3.1190,-60.0217) --spprange 0.001 --genrange 0.005 --cap 1000 
@@ -14,7 +14,7 @@ Which will download data for all insect species within 0.001 degrees of Manaus, 
 
 NB, these downloads can take a *long* time. Expect each github search to take 15 min - 3 hours to complete, depending on size. Download speeds will depend on internet speed and hardware, but image downloads may take as much as 1 second per image on some machines.
 
-##arguments
+## arguments
 
 ```
 coord       	  - central location coordinates (lat / long)

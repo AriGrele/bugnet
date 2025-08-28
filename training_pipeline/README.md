@@ -1,10 +1,10 @@
-#Model training
+# Model training
 
-##format_json_for_models.py
+## format_json_for_models.py
 
 Main python script for formatting image annotations for training YOLO or EfficientNet models. Allows annotations in the form of json files, nested folders, or image names in the style of "taxon_lower-taxon_lowest-taxon_ID.jpg", for any number of taxonomic levels. 
 
-##Example useage:
+## Example useage:
 
 ```
 format_json_for_models.py --img_src "../data/database_pipeline/good" --dst "../data/training_data" --min_thresh 100 --min_final 0 --max_final 2000 --test_size 10 --enet --dir_name
@@ -12,7 +12,7 @@ format_json_for_models.py --img_src "../data/database_pipeline/good" --dst "../d
 
 Which will format annotations for training an Efficientnet, taking taxonomic information from the names of the images in the input folder. Additionally, if there are fewer than 100 images representing a taxon, all images of that taxon will be labeled as "unknown". No classes will be dropped due to low image counts, and no more than 2000 images will be included per taxon. 10 images per taxon will be split out into a testing set (seperate from the training and validation sets)
 
-##arguments
+## arguments
 
 ```
 img_src - Path to folder of images or folder of folders of images

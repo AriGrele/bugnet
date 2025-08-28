@@ -1,10 +1,10 @@
-#Web scraping
+# Web scraping
 
-##process_images.py
+## process_images.py
 
 Main python script for cropping and classifiying insects from images. NB this script currently requires a model yaml file in this directory which contains a list of class numbers in each taxonomic level and a dict of taxon names. This can be copied directly from the training data. 
 
-##Example useage:
+## Example useage:
 
 ```
 process_images.py --images "../data/input" --yolo_weights "../data/models/yolo5_m.pt" --enet_weights "../data/models/finals.model.pt" --dst "../data/output" --resolution 3200 --filter "../data/models/binary_filter.4/best_model.pt" --static --crop
@@ -12,7 +12,7 @@ process_images.py --images "../data/input" --yolo_weights "../data/models/yolo5_
 
 Which will take all images in all folders in the input dir, localize insects at a resolution of 3200, crop them out and classify them, and cluster detect insects across frames
 
-##Arguments
+## Arguments
 
 ```
 images       - image folder. Can contain subfolders with images.
