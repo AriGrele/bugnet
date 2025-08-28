@@ -14,7 +14,7 @@ Which will download data for all insect species within 0.001 degrees of Manaus, 
 
 NB, these downloads can take a *long* time. Expect each github search to take 15 min - 3 hours to complete, depending on size. Download speeds will depend on internet speed and hardware, but image downloads may take as much as 1 second per image on some machines.
 
-## arguments
+## Arguments
 
 ```
 coord       	  - central location coordinates (lat / long)
