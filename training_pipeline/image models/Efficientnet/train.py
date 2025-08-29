@@ -45,7 +45,7 @@ class Handler:
         self.dst        = opt.dst
         self.augment    = opt.augment
         self.unknown    = opt.unknown
-        self.batchsize  = 64                                                    #hardcoded batchsize for stochastic gradient descent
+        self.batchsize  = 128                                                   #hardcoded batchsize for stochastic gradient descent
         
         self.loss_xy = {'train':[[],[]],'val':[[],[]]}
         self.acc_xy  = {'train':[[],[]],'val':[[],[]]}
@@ -64,8 +64,8 @@ class Handler:
         
         self.val_data      = Class(self.data,'val',self.img_size,False,self.unknown)
         
-        self.training      = DataLoader(self.training_data,batch_size=self.batchsize,shuffle=True)
-        self.validation    = DataLoader(self.val_data,     batch_size=self.batchsize,shuffle=True)
+        self.training      = DataLoader(self.training_data, batch_size = self.batchsize, shuffle=True, num_workers = 2)
+        self.validation    = DataLoader(self.val_data,      batch_size = self.batchsize, shuffle=True, num_workers = 2)
 
     def hierarchy(self): 
         match self.str:
@@ -118,9 +118,9 @@ class Handler:
 
         self.model.train()
 
-        t0 = time.time()                                                        #for fps calc
+        t0 = time.time()                                                        #for fps calc                                             
         for batch,(X,y) in enumerate(self.training):
-   
+                        
             self.size+=X.shape[0]
             self.num_batches+=1
 
@@ -131,7 +131,7 @@ class Handler:
             pred=torch.split(pred,species,1)                                    #split output into sections for each taxonomic level based on class counts
             y=torch.split(y,species,1)
 
-            losses = fix_unknowns_loss(y,pred,species,self.loss_fn,self.unknown) #specific loss calc based on "unknowns"
+            losses = fix_unknowns_loss(y,pred,species,self.loss_fn,self.unknown)#specific loss calc based on "unknowns"
 
             loss=sum([l*[.1,.1,.4,.4][i] for i,l in enumerate(losses)])         #weight lower levels higher
 
@@ -155,13 +155,12 @@ class Handler:
                     
                 correct[i] = sum(pool[i])/len(pool[i])
 
-            print(progress(f'Epoch: {epoch}, Loss {",".join([f"{x:.3f}" for x in test_loss])} | Acc {",".join([f"{x:.3f}" for x in correct])} | Progress:',(batch+1)/len(self.training)),end='\r')
+            print(progress(f'Epoch: {epoch}, FPS: {self.size/(time.time()-t0):.2f} | Loss: {",".join([f"{x:.3f}" for x in test_loss])} | Acc: {",".join([f"{x:.3f}" for x in correct])} | Progress:',(batch+1)/len(self.training)),end='\r')
 
         with open(f'{self.dst}/results_{self.str}.txt','a') as results:
             for i,loss in enumerate(test_loss):
                 text=f'{epoch} {i} {loss} {correct[i]} NA NA\n'
                 results.write(text)
-                    
         
         self.scheduler.step()                                                   #decay learning rate
         
@@ -179,11 +178,11 @@ class Handler:
         if self.str=='flat':
             species=[species[-1]]
             test_loss,correct=[0],[0]
-        
+            
         t0=time.time()
         with torch.no_grad():
             for batch,(X,y) in enumerate(self.validation):
-   
+                
                 self.size+=X.shape[0]
                 self.num_batches+=1
 
@@ -205,7 +204,7 @@ class Handler:
                     ymax          = y[i][torch.any(y[i]>1e-6,dim=1)]
                     correct[i]   +=sum([groupmax[j] in torch.nonzero(row==torch.max(row)) for j,row in enumerate(ymax)]) #if there are multiple correct values in y, pred is true if it matches any
                 
-                print(progress(f'Validation: Loss {",".join([f"{x:.3f}" for x in test_loss])} | Acc {",".join([f"{100*x/self.size:.3f}" for x in correct])} | Progress:',(batch+1)/len(self.validation)),end='\r')
+                print(progress(f'Validation: FPS: {self.size/(time.time()-t0):.2f} | Loss: {",".join([f"{x:.3f}" for x in test_loss])} | Acc: {",".join([f"{100*x/self.size:.3f}" for x in correct])} | Progress:',(batch+1)/len(self.validation)),end='\r')
             
         with open(f'{self.dst}/results_{self.str}.txt','a') as results:
             for i,loss in enumerate(test_loss):
@@ -219,6 +218,7 @@ class Handler:
     def process(self):
         score=10**10
         os.system('cls' if os.name == 'nt' else 'clear')
+        print('Begining training')
         
         for t in range(self.epochs):
             
