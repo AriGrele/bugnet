@@ -15,25 +15,25 @@ Which will format annotations for training an Efficientnet, taking taxonomic inf
 ## arguments
 
 ```
-img_src - Path to folder of images or folder of folders of images
-ann_src - Path to folder of JSON or txt annotation files
-dst - Path to output folder
-test_size - Number of images to split from each lowest class as a test set
-split - Percent values for tain, val, and test sets. test_size overwrites
-min_thresh - Minimum number of values in a class to replace with unknown, non-inclusive
-min_raw - Minimum number of values in a class to delete, non-inclusive
-min_final - Minimum number of values in a class to delete post merging unknowns, non-inclusive
-max_final - maximum number of values in a class to delete post merging unknowns, non-inclusive
-rename - directory of txts containing rename mappings
-show_boxes - Save example images with box annotations
-dir_name - Use the name of the image folder as part of the taxon name
-img_name - Use the name of the image file as part of the taxon name
-comments - Use the annotated comments as part of the taxon name
+img_src      - Path to folder of images or folder of folders of images
+ann_src      - Path to folder of JSON or txt annotation files
+dst          - Path to output folder
+test_size    - Number of images to split from each lowest class as a test set
+split        - Percent values for tain, val, and test sets. test_size overwrites
+min_thresh   - Minimum number of values in a class to replace with unknown, non-inclusive
+min_raw      - Minimum number of values in a class to delete, non-inclusive
+min_final    - Minimum number of values in a class to delete post merging unknowns, non-inclusive
+max_final    - maximum number of values in a class to delete post merging unknowns, non-inclusive
+rename       - directory of txts containing rename mappings
+show_boxes   - Save example images with box annotations
+dir_name     - Use the name of the image folder as part of the taxon name
+img_name     - Use the name of the image file as part of the taxon name
+comments     - Use the annotated comments as part of the taxon name
 box_comments - Use the annotated box comments as part of the taxon name
-yolo - format for yolo
-enet - format for efficientnet
-skip_blank - skip unannotated images
-skip_multi - skip images with multiple boxes for enet
-crop - crop boxes for enet
+yolo         - format for yolo
+enet         - format for efficientnet
+skip_blank   - skip unannotated images
+skip_multi   - skip images with multiple boxes for enet
+crop         - crop boxes for enet
 ```
 
