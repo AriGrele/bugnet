@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bqnrkog7lvwnd"]
+
+[ext_resource type="Shader" path="res://code/specimen_photos.gdshader" id="1_nmtkk"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_nmtkk")
+shader_parameter/height = 100
+shader_parameter/width = 100
+shader_parameter/confirmed = false

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://ma7tjst130is"]
+
+[ext_resource type="Shader" path="res://code/loadtingicon.gdshader" id="1_jxs0o"]
+[ext_resource type="Texture2D" uid="uid://bi6ityv6ttlrn" path="res://assets/loading.svg" id="2_yja4h"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_jxs0o")
+shader_parameter/tex = ExtResource("2_yja4h")

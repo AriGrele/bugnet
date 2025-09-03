@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://ndlaaoiys2h0"]
+
+[ext_resource type="Script" path="res://code/top_results.gd" id="1_4vvmj"]
+[ext_resource type="Script" path="res://code/main_results.scale.gd" id="1_y3tyg"]
+[ext_resource type="Script" path="res://code/result_text.gd" id="4_gi3qb"]
+[ext_resource type="Script" path="res://code/button.scale.gd" id="5_v6vli"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yt5br"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1mtpx"]
+
+[node name="top" type="Control"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_4vvmj")
+
+[node name="main" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_y3tyg")
+
+[node name="TextureRect" type="TextureRect" parent="main"]
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 4
+stretch_mode = 5
+
+[node name="spacer1" type="Control" parent="main"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="result_text" type="RichTextLabel" parent="main"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 7.0
+theme_override_constants/line_separation = 0
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 1
+theme_override_font_sizes/italics_font_size = 14
+theme_override_font_sizes/bold_italics_font_size = 13
+theme_override_font_sizes/mono_font_size = 16
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yt5br")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1mtpx")
+bbcode_enabled = true
+text = "test text here
+[i]italics here[/i]"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 3
+shortcut_keys_enabled = false
+script = ExtResource("4_gi3qb")
+
+[node name="Button" type="Button" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 40.0
+tooltip_text = "Moose"
+theme_override_constants/outline_size = 1
+clip_text = true
+script = ExtResource("5_v6vli")
+
+[connection signal="pressed" from="Button" to="main" method="_on_button_pressed"]

@@ -1,0 +1,123 @@
+[gd_scene load_steps=5 format=3 uid="uid://cauxg54g2nqhk"]
+
+[ext_resource type="Texture2D" uid="uid://bdbcsedhplfn8" path="res://assets/search.svg" id="1_0awp1"]
+[ext_resource type="Script" path="res://code/select_taxa.gd" id="1_77phs"]
+[ext_resource type="Texture2D" uid="uid://bi6ityv6ttlrn" path="res://assets/loading.svg" id="3_8cn85"]
+[ext_resource type="Script" path="res://code/circle.gd" id="4_bv7b5"]
+
+[node name="vbox" type="VBoxContainer"]
+custom_minimum_size = Vector2(400, 650)
+offset_right = 400.0
+offset_bottom = 650.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_77phs")
+
+[node name="upper" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="upper"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "   Add a taxonomic identification"
+
+[node name="searchbox" type="HBoxContainer" parent="upper"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="spacer1" type="Control" parent="upper/searchbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="searchicon" type="TextureRect" parent="upper/searchbox"]
+layout_mode = 2
+texture = ExtResource("1_0awp1")
+
+[node name="taxonform" type="TextEdit" parent="upper/searchbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 10.0
+theme_override_colors/font_placeholder_color = Color(0.5, 0.5, 0.5, 1)
+placeholder_text = "Search for a taxon"
+
+[node name="copy" type="Button" parent="upper/searchbox"]
+layout_mode = 2
+text = "Copy"
+
+[node name="apply" type="Button" parent="upper/searchbox"]
+layout_mode = 2
+text = "Apply"
+
+[node name="spacer2" type="Control" parent="upper/searchbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="resultsbox" type="HBoxContainer" parent="upper"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="spacer1" type="Control" parent="upper/resultsbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="scroll" type="ScrollContainer" parent="upper/resultsbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+
+[node name="results_box" type="VBoxContainer" parent="upper/resultsbox/scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="loading" type="HBoxContainer" parent="upper/resultsbox/scroll/results_box"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Control" type="Control" parent="upper/resultsbox/scroll/results_box/loading"]
+custom_minimum_size = Vector2(20, 5)
+layout_mode = 2
+
+[node name="circle" type="TextureRect" parent="upper/resultsbox/scroll/results_box/loading/Control"]
+process_mode = 3
+layout_mode = 2
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 23.0
+offset_bottom = 23.0
+rotation = 6.28319
+pivot_offset = Vector2(10, 10)
+texture = ExtResource("3_8cn85")
+script = ExtResource("4_bv7b5")
+
+[node name="loading" type="Label" parent="upper/resultsbox/scroll/results_box/loading"]
+layout_mode = 2
+text = "Loading . . ."
+
+[node name="results" type="VBoxContainer" parent="upper/resultsbox/scroll/results_box"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="spacer2" type="Control" parent="upper/resultsbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="lower" type="Panel" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="text_changed" from="upper/searchbox/taxonform" to="." method="_on_taxonform_text_changed"]
+[connection signal="text_set" from="upper/searchbox/taxonform" to="." method="_on_taxonform_text_set"]
+[connection signal="pressed" from="upper/searchbox/copy" to="." method="_on_copy_pressed"]
+[connection signal="pressed" from="upper/searchbox/apply" to="." method="_on_apply_pressed"]

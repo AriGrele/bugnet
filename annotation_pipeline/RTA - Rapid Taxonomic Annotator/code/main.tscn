@@ -1,0 +1,452 @@
+[gd_scene load_steps=34 format=3 uid="uid://bpmkxe7yhk8kt"]
+
+[ext_resource type="Theme" uid="uid://ckxkwre1nlavg" path="res://themes/darktheme.tres" id="1_b26ii"]
+[ext_resource type="Script" path="res://code/screen.scale.gd" id="1_cxbnd"]
+[ext_resource type="Script" path="res://code/top.scale.gd" id="1_mksi1"]
+[ext_resource type="Script" path="res://code/globals.gd" id="3_2n32p"]
+[ext_resource type="Script" path="res://code/grid.set_cols.gd" id="5_5njrj"]
+[ext_resource type="Script" path="res://code/background.scale.gd" id="6_2v5t0"]
+[ext_resource type="Script" path="res://code/options.scale.gd" id="6_f7qmu"]
+[ext_resource type="PackedScene" uid="uid://cauxg54g2nqhk" path="res://code/select_taxa.tscn" id="7_jbxs1"]
+[ext_resource type="Script" path="res://code/settings.scal.gd" id="8_mhmek"]
+[ext_resource type="Script" path="res://code/hadj.scale.gd" id="9_pg8nb"]
+[ext_resource type="Script" path="res://code/cols.scale.gd" id="10_vcr75"]
+[ext_resource type="Script" path="res://code/functions.gd" id="11_aqdsj"]
+[ext_resource type="Script" path="res://code/theme.gd" id="11_bj3ky"]
+[ext_resource type="Script" path="res://code/language.gd" id="12_5l3w2"]
+[ext_resource type="Script" path="res://code/modify_data.gd" id="12_eb0l2"]
+[ext_resource type="Script" path="res://code/parse_taxa.gd" id="12_uraqg"]
+[ext_resource type="Script" path="res://code/FileDialog.gd" id="13_3y33x"]
+[ext_resource type="Script" path="res://code/scale_images.gd" id="13_75h8s"]
+[ext_resource type="Script" path="res://code/updatepanel.gd" id="14_q4cn8"]
+[ext_resource type="StyleBox" uid="uid://qh04c4m4gilk" path="res://code/closeupdate.tres" id="15_r0p5x"]
+[ext_resource type="Script" path="res://code/settings.gd" id="19_c8i0s"]
+[ext_resource type="Script" path="res://code/version.gd" id="20_fekw6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lxt01"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_du2sw"]
+bg_color = Color(0.5, 0.5, 0.5, 1)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x03p6"]
+bg_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ewrs2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jofyj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qjy0v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wkhrn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_huffl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d1wjy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k8ico"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wswdg"]
+
+[node name="main" type="Node2D"]
+
+[node name="screen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_b26ii")
+
+[node name="background" type="Panel" parent="screen"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 1200.0
+offset_bottom = 700.0
+script = ExtResource("6_2v5t0")
+
+[node name="upper_container" type="VBoxContainer" parent="screen"]
+layout_mode = 0
+offset_right = 893.0
+offset_bottom = 700.0
+
+[node name="top" type="Control" parent="screen/upper_container"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 40.0
+
+[node name="panel" type="Panel" parent="screen/upper_container/top"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 1200.0
+offset_bottom = 50.0
+script = ExtResource("1_mksi1")
+
+[node name="buttons" type="HBoxContainer" parent="screen/upper_container/top"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 0
+offset_right = 442.0
+offset_bottom = 39.0
+
+[node name="load" type="Button" parent="screen/upper_container/top/buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Load image directory"
+
+[node name="spacer1" type="Control" parent="screen/upper_container/top/buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="save" type="Button" parent="screen/upper_container/top/buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Save annotations"
+
+[node name="spacer2" type="Control" parent="screen/upper_container/top/buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="settings" type="Button" parent="screen/upper_container/top/buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Settings"
+
+[node name="spacer3" type="Control" parent="screen/upper_container/top/buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="screen/upper_container/top/buttons"]
+layout_mode = 2
+
+[node name="page" type="Label" parent="screen/upper_container/top/buttons/HBoxContainer"]
+layout_mode = 2
+text = "Page"
+
+[node name="TextEdit" type="TextEdit" parent="screen/upper_container/top/buttons/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+tooltip_text = "enter the page number out of the total and hit \"Go\", e.g. 1/N, 2/N, 3/N, etc."
+
+[node name="go" type="Button" parent="screen/upper_container/top/buttons/HBoxContainer"]
+layout_mode = 2
+text = "Go"
+
+[node name="cols" type="HBoxContainer" parent="screen/upper_container"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 660.0
+script = ExtResource("1_cxbnd")
+
+[node name="left" type="Panel" parent="screen/upper_container/cols"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="options" type="VBoxContainer" parent="screen/upper_container/cols/left"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 650.0
+script = ExtResource("6_f7qmu")
+
+[node name="tabs" type="TabContainer" parent="screen/upper_container/cols/left/options"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 550.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_lxt01")
+clip_tabs = false
+tabs_visible = false
+
+[node name="Annotate taxa" parent="screen/upper_container/cols/left/options/tabs" instance=ExtResource("7_jbxs1")]
+layout_mode = 2
+
+[node name="scalebox" type="HBoxContainer" parent="screen/upper_container/cols/left/options"]
+layout_mode = 2
+
+[node name="scalelabel" type="Label" parent="screen/upper_container/cols/left/options/scalebox"]
+layout_mode = 2
+text = "Change image size"
+
+[node name="spacer1" type="Control" parent="screen/upper_container/cols/left/options/scalebox"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="scale_slider" type="HSlider" parent="screen/upper_container/cols/left/options/scalebox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 50.0
+tooltip_text = "Change the size of displayed images"
+min_value = 20.0
+max_value = 950.0
+value = 200.0
+tick_count = 1000
+
+[node name="spacer2" type="Control" parent="screen/upper_container/cols/left/options/scalebox"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="buttons" type="HBoxContainer" parent="screen/upper_container/cols/left/options"]
+layout_mode = 2
+size_flags_stretch_ratio = 50.0
+
+[node name="spacer1" type="Control" parent="screen/upper_container/cols/left/options/buttons"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="previous" type="Button" parent="screen/upper_container/cols/left/options/buttons"]
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "Load previous page of images"
+theme_override_font_sizes/font_size = 21
+text = "< Previous 200 "
+
+[node name="spacer" type="Control" parent="screen/upper_container/cols/left/options/buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="next" type="Button" parent="screen/upper_container/cols/left/options/buttons"]
+layout_mode = 2
+size_flags_horizontal = 8
+tooltip_text = "Load next page of images"
+theme_override_font_sizes/font_size = 21
+text = "Next 200  >"
+
+[node name="spacer2" type="Control" parent="screen/upper_container/cols/left/options/buttons"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="spacer" type="Control" parent="screen/upper_container/cols/left/options"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="middle" type="HBoxContainer" parent="screen/upper_container/cols"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="spacer1" type="Control" parent="screen/upper_container/cols/middle"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="scroll" type="ScrollContainer" parent="screen/upper_container/cols/middle"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 100.0
+
+[node name="grid" type="GridContainer" parent="screen/upper_container/cols/middle/scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 16
+columns = 2
+script = ExtResource("5_5njrj")
+
+[node name="spacer2" type="Control" parent="screen/upper_container/cols/middle"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="right_margin" type="Panel" parent="screen/upper_container/cols"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="settings" type="Control" parent="screen"]
+visible = false
+anchors_preset = 0
+offset_right = 1200.0
+offset_bottom = 700.0
+script = ExtResource("8_mhmek")
+
+[node name="hadj" type="HBoxContainer" parent="screen/settings"]
+layout_mode = 0
+offset_right = 1200.0
+offset_bottom = 700.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("9_pg8nb")
+
+[node name="spacer1" type="Control" parent="screen/settings/hadj"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="vadj" type="VBoxContainer" parent="screen/settings/hadj"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="spacer1" type="Control" parent="screen/settings/hadj/vadj"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+
+[node name="settings_background" type="Panel" parent="screen/settings/hadj/vadj"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_du2sw")
+
+[node name="cols" type="HBoxContainer" parent="screen/settings/hadj/vadj/settings_background"]
+layout_mode = 0
+offset_right = 592.0
+offset_bottom = 492.0
+theme_override_constants/separation = 20
+script = ExtResource("10_vcr75")
+
+[node name="spacer1" type="Control" parent="screen/settings/hadj/vadj/settings_background/cols"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="display" type="VBoxContainer" parent="screen/settings/hadj/vadj/settings_background/cols"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="screen/settings/hadj/vadj/settings_background/cols/display"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Display"
+
+[node name="mode" type="OptionButton" parent="screen/settings/hadj/vadj/settings_background/cols/display"]
+layout_mode = 2
+script = ExtResource("11_bj3ky")
+
+[node name="interface" type="VBoxContainer" parent="screen/settings/hadj/vadj/settings_background/cols"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="screen/settings/hadj/vadj/settings_background/cols/interface"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Interface"
+
+[node name="language" type="OptionButton" parent="screen/settings/hadj/vadj/settings_background/cols/interface"]
+visible = false
+layout_mode = 2
+script = ExtResource("12_5l3w2")
+
+[node name="misc" type="VBoxContainer" parent="screen/settings/hadj/vadj/settings_background/cols"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="screen/settings/hadj/vadj/settings_background/cols/misc"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Miscellaneous"
+
+[node name="spacer3" type="Control" parent="screen/settings/hadj/vadj/settings_background/cols"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="close" type="Button" parent="screen/settings/hadj/vadj/settings_background/cols"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Close"
+
+[node name="spacer2" type="Control" parent="screen/settings/hadj/vadj"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+
+[node name="spacer2" type="Control" parent="screen/settings/hadj"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="incoming text" type="Label" parent="screen/settings"]
+layout_mode = 0
+offset_left = 346.0
+offset_top = 195.0
+offset_right = 484.0
+offset_bottom = 226.0
+text = "More settings TBA
+"
+
+[node name="FileDialog" type="FileDialog" parent="screen"]
+title = "Open a Directory"
+position = Vector2i(0, 36)
+size = Vector2i(396, 167)
+ok_button_text = "Select Current Folder"
+file_mode = 2
+access = 2
+script = ExtResource("13_3y33x")
+
+[node name="updatepanel" type="Panel" parent="screen"]
+visible = false
+layout_mode = 0
+offset_left = 14.0
+offset_top = 13.0
+offset_right = 414.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x03p6")
+script = ExtResource("14_q4cn8")
+
+[node name="Label" type="Label" parent="screen/updatepanel"]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 308.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "You are currently using version <current>,
+The most recent version is <version> 
+Consider updating:"
+
+[node name="link" type="Button" parent="screen/updatepanel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 93.0
+offset_right = 390.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ewrs2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jofyj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_qjy0v")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wkhrn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_huffl")
+text = "https://arigrele.github.io/Software/RTA"
+
+[node name="close" type="Button" parent="screen/updatepanel"]
+layout_mode = 0
+offset_left = 362.0
+offset_right = 400.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("15_r0p5x")
+theme_override_styles/hover = ExtResource("15_r0p5x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_d1wjy")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_k8ico")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wswdg")
+text = "X"
+
+[node name="navigation" type="Node2D" parent="."]
+
+[node name="globals" type="Node2D" parent="."]
+script = ExtResource("3_2n32p")
+
+[node name="functions" type="Node2D" parent="."]
+script = ExtResource("11_aqdsj")
+
+[node name="parse_taxa" type="Node2D" parent="."]
+script = ExtResource("12_uraqg")
+
+[node name="display_images" type="Node2D" parent="."]
+script = ExtResource("13_75h8s")
+
+[node name="modify_data" type="Node2D" parent="."]
+script = ExtResource("12_eb0l2")
+
+[node name="settings" type="Node2D" parent="."]
+script = ExtResource("19_c8i0s")
+
+[node name="version" type="Node2D" parent="."]
+script = ExtResource("20_fekw6")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="version"]
+
+[connection signal="pressed" from="screen/upper_container/top/buttons/load" to="screen/FileDialog" method="_on_load_pressed"]
+[connection signal="pressed" from="screen/upper_container/top/buttons/settings" to="screen/settings" method="_on_settings_pressed"]
+[connection signal="text_set" from="screen/upper_container/top/buttons/HBoxContainer/TextEdit" to="display_images" method="_on_text_edit_text_set"]
+[connection signal="pressed" from="screen/upper_container/top/buttons/HBoxContainer/go" to="display_images" method="_on_go_pressed"]
+[connection signal="value_changed" from="screen/upper_container/cols/left/options/scalebox/scale_slider" to="display_images" method="_on_scale_slider_value_changed"]
+[connection signal="pressed" from="screen/upper_container/cols/left/options/buttons/previous" to="display_images" method="_on_previous_pressed"]
+[connection signal="pressed" from="screen/upper_container/cols/left/options/buttons/next" to="display_images" method="_on_next_pressed"]
+[connection signal="gui_input" from="screen/upper_container/cols/middle/scroll/grid" to="screen/upper_container/cols/middle/scroll/grid" method="_on_gui_input"]
+[connection signal="item_selected" from="screen/settings/hadj/vadj/settings_background/cols/display/mode" to="settings" method="_on_mode_item_selected"]
+[connection signal="item_selected" from="screen/settings/hadj/vadj/settings_background/cols/interface/language" to="settings" method="_on_language_item_selected"]
+[connection signal="pressed" from="screen/settings/hadj/vadj/settings_background/cols/close" to="screen/settings" method="_on_close_pressed"]
+[connection signal="dir_selected" from="screen/FileDialog" to="display_images" method="_on_file_dialog_dir_selected"]
+[connection signal="dir_selected" from="screen/FileDialog" to="settings" method="_on_file_dialog_dir_selected"]
+[connection signal="pressed" from="screen/updatepanel/link" to="screen/updatepanel" method="_on_link_pressed"]
+[connection signal="pressed" from="screen/updatepanel/close" to="screen/updatepanel" method="_on_close_pressed"]

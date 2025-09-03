@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://2hqumgyb8a8b"]
+
+[ext_resource type="Script" path="res://code/image_background.scale.gd" id="1_7gbj1"]
+[ext_resource type="Script" path="res://code/image_vbox.scale.gd" id="1_k2u74"]
+[ext_resource type="Material" uid="uid://bqnrkog7lvwnd" path="res://code/image_material.tres" id="2_35uhw"]
+[ext_resource type="Script" path="res://code/taxon_text.scale.gd" id="2_dn3w7"]
+[ext_resource type="Script" path="res://code/taxon_pic.set_texture.gd" id="2_uqn2o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dxfdh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehhlq"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hhv8o"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eku4q"]
+bg_color = Color(0.113725, 0.541176, 0.662745, 0.392157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.113725, 0.541176, 0.662745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkeid"]
+bg_color = Color(0.0705882, 0.388235, 0.733333, 0.392157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0705882, 0.388235, 0.733333, 1)
+
+[node name="main" type="Control"]
+custom_minimum_size = Vector2(20, 60)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 6
+
+[node name="image_vbox" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(20, 60)
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 60.0
+theme_override_constants/separation = 0
+script = ExtResource("1_k2u74")
+
+[node name="taxon_pic" type="ColorRect" parent="image_vbox"]
+material = ExtResource("2_35uhw")
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+script = ExtResource("2_uqn2o")
+
+[node name="scale_slider" type="ProgressBar" parent="image_vbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "Relative scale of insect. Units accurate at a pixel density of 11px/mm"
+theme_override_font_sizes/font_size = 0
+theme_override_styles/background = SubResource("StyleBoxEmpty_dxfdh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ehhlq")
+value = 90.0
+show_percentage = false
+
+[node name="taxon_text" type="RichTextLabel" parent="image_vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme_override_constants/line_separation = -1
+theme_override_font_sizes/normal_font_size = 14
+theme_override_font_sizes/italics_font_size = 14
+bbcode_enabled = true
+text = "[i]1 cm[/i]
+test text here"
+scroll_active = false
+script = ExtResource("2_dn3w7")
+
+[node name="image_button" type="Button" parent="."]
+custom_minimum_size = Vector2(20, 60)
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 60.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_hhv8o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_eku4q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tkeid")
+toggle_mode = true
+expand_icon = true
+script = ExtResource("1_7gbj1")
+
+[connection signal="button_down" from="image_button" to="image_button" method="_on_button_down"]
+[connection signal="button_up" from="image_button" to="image_button" method="_on_button_up"]
+[connection signal="mouse_entered" from="image_button" to="image_button" method="_on_mouse_entered"]

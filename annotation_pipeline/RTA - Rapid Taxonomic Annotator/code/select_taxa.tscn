@@ -1,0 +1,333 @@
+[gd_scene load_steps=16 format=3 uid="uid://cauxg54g2nqhk"]
+
+[ext_resource type="Texture2D" uid="uid://bdbcsedhplfn8" path="res://assets/search.svg" id="1_0awp1"]
+[ext_resource type="Script" path="res://code/select_taxa.gd" id="1_77phs"]
+[ext_resource type="Texture2D" uid="uid://bi6ityv6ttlrn" path="res://assets/loading.svg" id="3_8cn85"]
+[ext_resource type="Script" path="res://code/circle.gd" id="4_bv7b5"]
+[ext_resource type="Script" path="res://code/confirm_all.gd" id="5_0hqvc"]
+[ext_resource type="Shader" path="res://code/taxon_img.gdshader" id="5_00vxr"]
+[ext_resource type="Script" path="res://code/taxon_img.gd" id="5_fri6h"]
+[ext_resource type="Script" path="res://code/nameform.gd" id="5_gphps"]
+[ext_resource type="Script" path="res://code/confirm_selected.gd" id="5_q8b8q"]
+[ext_resource type="Texture2D" uid="uid://c2lerg43qgvld" path="res://assets/icon.png" id="6_78dy0"]
+[ext_resource type="Script" path="res://code/hidebutton.gd" id="7_7fnpr"]
+[ext_resource type="Script" path="res://code/non-insect.gd" id="7_oy7vh"]
+[ext_resource type="Texture2D" uid="uid://byy0jiixl8vyl" path="res://assets/reload.png" id="8_cpuwh"]
+[ext_resource type="Script" path="res://code/confidence.gd" id="10_5s2s3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3w24"]
+shader = ExtResource("5_00vxr")
+shader_parameter/height = 350
+shader_parameter/width = 350
+shader_parameter/tex = ExtResource("6_78dy0")
+
+[node name="vbox" type="VBoxContainer"]
+custom_minimum_size = Vector2(420, 650)
+offset_right = 400.0
+offset_bottom = 650.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_77phs")
+
+[node name="upper" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.42
+theme_override_constants/separation = 0
+
+[node name="filter ids" type="Label" parent="upper"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "   Filter images by taxon"
+
+[node name="filterbox" type="HBoxContainer" parent="upper"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="spacer1" type="Control" parent="upper/filterbox"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="searchicon" type="TextureRect" parent="upper/filterbox"]
+layout_mode = 2
+texture = ExtResource("1_0awp1")
+
+[node name="taxonform" type="TextEdit" parent="upper/filterbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 10.0
+theme_override_colors/font_placeholder_color = Color(0.5, 0.5, 0.5, 1)
+placeholder_text = "Search for a taxon"
+
+[node name="filter" type="Button" parent="upper/filterbox"]
+layout_mode = 2
+tooltip_text = "Filter images by taxonomic search"
+text = "Filter"
+
+[node name="clear" type="Button" parent="upper/filterbox"]
+layout_mode = 2
+tooltip_text = "Clear filter"
+text = "Clear"
+
+[node name="spacer2" type="Control" parent="upper/filterbox"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="spacer1" type="Control" parent="upper"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="add id" type="Label" parent="upper"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "   Add a taxonomic identification"
+
+[node name="searchbox" type="HBoxContainer" parent="upper"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="spacer1" type="Control" parent="upper/searchbox"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="searchicon" type="TextureRect" parent="upper/searchbox"]
+layout_mode = 2
+texture = ExtResource("1_0awp1")
+
+[node name="taxonform" type="TextEdit" parent="upper/searchbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 10.0
+theme_override_colors/font_placeholder_color = Color(0.5, 0.5, 0.5, 1)
+placeholder_text = "Search for a taxon"
+
+[node name="copy" type="Button" parent="upper/searchbox"]
+layout_mode = 2
+tooltip_text = "Copy taxon from first selected image"
+text = "Copy"
+
+[node name="apply" type="Button" parent="upper/searchbox"]
+layout_mode = 2
+tooltip_text = "Apply taxon to all selected images"
+text = "Apply"
+
+[node name="spacer2" type="Control" parent="upper/searchbox"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="resultsbox" type="HBoxContainer" parent="upper"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="spacer1" type="Control" parent="upper/resultsbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="scroll" type="ScrollContainer" parent="upper/resultsbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+
+[node name="results_box" type="VBoxContainer" parent="upper/resultsbox/scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="loading" type="HBoxContainer" parent="upper/resultsbox/scroll/results_box"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Control" type="Control" parent="upper/resultsbox/scroll/results_box/loading"]
+custom_minimum_size = Vector2(20, 5)
+layout_mode = 2
+
+[node name="circle" type="TextureRect" parent="upper/resultsbox/scroll/results_box/loading/Control"]
+process_mode = 3
+layout_mode = 2
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 23.0
+offset_bottom = 23.0
+rotation = 6.28319
+pivot_offset = Vector2(10, 10)
+texture = ExtResource("3_8cn85")
+script = ExtResource("4_bv7b5")
+
+[node name="loading" type="Label" parent="upper/resultsbox/scroll/results_box/loading"]
+layout_mode = 2
+text = "Loading . . ."
+
+[node name="results" type="VBoxContainer" parent="upper/resultsbox/scroll/results_box"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="spacer2" type="Control" parent="upper/resultsbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="comparison" type="HBoxContainer" parent="upper"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="spacer1" type="Control" parent="upper/comparison"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="upper/comparison"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="spacer1" type="Control" parent="upper/comparison/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="taxon_img" type="ColorRect" parent="upper/comparison/VBoxContainer"]
+material = SubResource("ShaderMaterial_u3w24")
+custom_minimum_size = Vector2(350, 350)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "Example taxon image. If no image is stored locally, no image will be displayed. "
+script = ExtResource("5_fri6h")
+
+[node name="new_img" type="TextureButton" parent="upper/comparison/VBoxContainer/taxon_img"]
+visible = false
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture_normal = ExtResource("8_cpuwh")
+texture_pressed = ExtResource("8_cpuwh")
+texture_hover = ExtResource("8_cpuwh")
+texture_disabled = ExtResource("8_cpuwh")
+texture_focused = ExtResource("8_cpuwh")
+ignore_texture_size = true
+
+[node name="spacer2" type="Control" parent="upper/comparison/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="spacer2" type="Control" parent="upper/comparison"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="lower" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="savetext" type="Label" parent="lower"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "   Save entered taxonomic labels"
+
+[node name="saveform" type="HBoxContainer" parent="lower"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+
+[node name="spacer1" type="Control" parent="lower/saveform"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="nameform" type="TextEdit" parent="lower/saveform"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 10.0
+tooltip_text = "Enter name to associate with output data"
+theme_override_colors/font_placeholder_color = Color(0.5, 0.5, 0.5, 1)
+placeholder_text = "Enter validator name"
+script = ExtResource("5_gphps")
+
+[node name="confidence" type="TextEdit" parent="lower/saveform"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.93
+tooltip_text = "Confidence in annotation"
+theme_override_colors/font_placeholder_color = Color(0.5, 0.5, 0.5, 1)
+text = "95"
+placeholder_text = "Conf"
+script = ExtResource("10_5s2s3")
+
+[node name="confirm" type="Button" parent="lower/saveform"]
+layout_mode = 2
+tooltip_text = "Mark all selected images and associated annotations as \"confirmed\""
+text = "Confirm"
+script = ExtResource("5_q8b8q")
+
+[node name="spacer2" type="Control" parent="lower/saveform"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="options" type="HBoxContainer" parent="lower"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+
+[node name="spacer1" type="Control" parent="lower/options"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="confirm" type="Button" parent="lower/options"]
+layout_mode = 2
+tooltip_text = "Mark all loaded  images and associated annotations as \"confirmed\""
+text = "Confirm All"
+script = ExtResource("5_0hqvc")
+
+[node name="spacer4" type="Control" parent="lower/options"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="non-insect" type="Button" parent="lower/options"]
+layout_mode = 2
+tooltip_text = "Mark all selected images as \"False positive\""
+text = "False positive"
+script = ExtResource("7_oy7vh")
+
+[node name="spacer3" type="Control" parent="lower/options"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="hide" type="Button" parent="lower/options"]
+layout_mode = 2
+tooltip_text = "Hide all images which have been marked as confirmed"
+text = "Hide valid"
+script = ExtResource("7_7fnpr")
+
+[node name="spacer2" type="Control" parent="lower/options"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="upper/filterbox/filter" to="." method="_on_filter_pressed"]
+[connection signal="pressed" from="upper/filterbox/clear" to="." method="_on_clear_pressed"]
+[connection signal="text_changed" from="upper/searchbox/taxonform" to="." method="_on_taxonform_text_changed"]
+[connection signal="text_set" from="upper/searchbox/taxonform" to="." method="_on_taxonform_text_set"]
+[connection signal="pressed" from="upper/searchbox/copy" to="." method="_on_copy_pressed"]
+[connection signal="pressed" from="upper/searchbox/apply" to="." method="_on_apply_pressed"]
+[connection signal="pressed" from="upper/comparison/VBoxContainer/taxon_img/new_img" to="." method="_on_new_img_pressed"]
+[connection signal="text_changed" from="lower/saveform/nameform" to="lower/saveform/nameform" method="_on_text_changed"]
+[connection signal="text_changed" from="lower/saveform/confidence" to="lower/saveform/confidence" method="_on_text_changed"]
+[connection signal="pressed" from="lower/saveform/confirm" to="lower/saveform/confirm" method="_on_pressed"]
+[connection signal="pressed" from="lower/options/confirm" to="lower/options/confirm" method="_on_pressed"]
+[connection signal="pressed" from="lower/options/non-insect" to="lower/options/non-insect" method="_on_pressed"]
+[connection signal="pressed" from="lower/options/hide" to="lower/options/hide" method="_on_pressed"]

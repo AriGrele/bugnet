@@ -1,0 +1,253 @@
+[gd_scene load_steps=19 format=3 uid="uid://btpwrp2h7323o"]
+
+[ext_resource type="Texture2D" uid="uid://dx4dryu14dfav" path="res://assets/logo sprites/teams.t.svg" id="1_s5b3l"]
+[ext_resource type="Script" path="res://code/splash.gd" id="1_to7xg"]
+[ext_resource type="Texture2D" uid="uid://0tf4httt6658" path="res://assets/logo sprites/team.e.svg" id="2_0rmyp"]
+[ext_resource type="Texture2D" uid="uid://bxjwls2jr4yqn" path="res://assets/logo sprites/team.a.svg" id="3_vrfrp"]
+[ext_resource type="Texture2D" uid="uid://b7ob0172d6kep" path="res://assets/logo sprites/team.m.svg" id="4_suwp5"]
+[ext_resource type="Texture2D" uid="uid://bvfbgjl8rmyn5" path="res://assets/logo sprites/waponi.w.svg" id="5_hgr68"]
+[ext_resource type="Texture2D" uid="uid://ba575m737uipa" path="res://assets/logo sprites/waponi.p.svg" id="6_wirim"]
+[ext_resource type="Texture2D" uid="uid://slcol15al6y" path="res://assets/logo sprites/waponi.a.svg" id="7_xx8ee"]
+[ext_resource type="Texture2D" uid="uid://dg00rtp72ge2y" path="res://assets/logo sprites/waponi.o.svg" id="8_1hffb"]
+[ext_resource type="Texture2D" uid="uid://cchjjpc5u74t3" path="res://assets/logo sprites/waponi.n.svg" id="9_01o6a"]
+[ext_resource type="Texture2D" uid="uid://dcskdpi5jw03n" path="res://assets/logo sprites/waponi.i.svg" id="10_0v8ta"]
+[ext_resource type="Texture2D" uid="uid://cg65uvj5j3mdv" path="res://assets/logo sprites/background.svg" id="11_lp526"]
+[ext_resource type="Texture2D" uid="uid://cnho03pptv5vm" path="res://assets/logo sprites/main.svg" id="12_ymnn4"]
+[ext_resource type="Script" path="res://code/splash_play.gd" id="13_4y08c"]
+[ext_resource type="Texture2D" uid="uid://baeokihm1voon" path="res://assets/logo sprites/waponi_icon_small.svg" id="14_qhjog"]
+
+[sub_resource type="Animation" id="Animation_cgs7f"]
+resource_name = "main"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-271, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Team_t:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -60), Vector2(46, -60)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Team_e:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -60), Vector2(157.5, -60)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Team_a:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -60), Vector2(271.25, -60)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Team_m:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -60), Vector2(393, -60)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Waponi_w:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 60), Vector2(36.25, 60)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Waponi_a:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 60), Vector2(128.5, 60)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Waponi_p:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 60), Vector2(217.75, 60)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Waponi_o:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 60), Vector2(299.25, 60)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Waponi_n:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 60), Vector2(387.75, 60)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Waponi_i:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 60), Vector2(451.25, 60)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Background:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-271, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gw8j3"]
+resource_name = "team_t"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nnm11"]
+_data = {
+"main": SubResource("Animation_cgs7f"),
+"team_t": SubResource("Animation_gw8j3")
+}
+
+[node name="main" type="Node2D"]
+position = Vector2(600, 350)
+script = ExtResource("1_to7xg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -600.0
+offset_top = -350.0
+offset_right = 600.0
+offset_bottom = 350.0
+
+[node name="Team_t" type="Sprite2D" parent="."]
+position = Vector2(0, -60)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_s5b3l")
+
+[node name="Team_e" type="Sprite2D" parent="."]
+position = Vector2(0, -60)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_0rmyp")
+
+[node name="Team_a" type="Sprite2D" parent="."]
+position = Vector2(0, -60)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_vrfrp")
+
+[node name="Team_m" type="Sprite2D" parent="."]
+position = Vector2(0, -60)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_suwp5")
+
+[node name="Waponi_w" type="Sprite2D" parent="."]
+position = Vector2(0, 60)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_hgr68")
+
+[node name="Waponi_p" type="Sprite2D" parent="."]
+position = Vector2(0, 60)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_wirim")
+
+[node name="Waponi_a" type="Sprite2D" parent="."]
+position = Vector2(0, 60)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_xx8ee")
+
+[node name="Waponi_o" type="Sprite2D" parent="."]
+position = Vector2(0, 60)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("8_1hffb")
+
+[node name="Waponi_n" type="Sprite2D" parent="."]
+position = Vector2(0, 60)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("9_01o6a")
+
+[node name="Waponi_i" type="Sprite2D" parent="."]
+position = Vector2(0, 60)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_0v8ta")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("11_lp526")
+
+[node name="Main" type="Sprite2D" parent="."]
+texture = ExtResource("12_ymnn4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Main"]
+audio_max_polyphony = 1
+libraries = {
+"": SubResource("AnimationLibrary_nnm11")
+}
+script = ExtResource("13_4y08c")
+
+[node name="WaponiIconSmall" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("14_qhjog")
+
+[connection signal="animation_finished" from="Main/AnimationPlayer" to="Main/AnimationPlayer" method="_on_animation_finished"]
