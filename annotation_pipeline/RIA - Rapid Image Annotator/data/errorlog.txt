@@ -1,0 +1,68 @@
+Godot Engine v3.6.1.stable.official.b1ba98fce - https://godotengine.org
+OpenGL ES 2.0 Renderer: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
+ 
+ERROR: (Node not found: "View/CanvasLayer/zoom_shader/Viewport" (relative to "Main").)
+   at: get_node (scene/main/node.cpp:1513) - Method failed. Returning: nullptr
+ERROR: ViewportTexture: Path to node is invalid.
+   at: setup_local_to_scene (scene/main/viewport.cpp:72) - Condition "!vpn" is true.
+ERROR: (Node not found: "View/CanvasLayer/zoom_shader/Viewport" (relative to "Main").)
+   at: get_node (scene/main/node.cpp:1513) - Method failed. Returning: nullptr
+ERROR: ViewportTexture: Path to node is invalid.
+   at: setup_local_to_scene (scene/main/viewport.cpp:72) - Condition "!vpn" is true.
+[Bottom margin down, [[InputEventKey:3534]]]
+[InputEventKey:3534] False
+[Bottom margin up, [[InputEventKey:3535]]]
+[InputEventKey:3535] False
+[Clear data, [[InputEventKey:3536]]]
+[InputEventKey:3536] False
+[Comments, []]
+[Delete box, [[InputEventKey:3537], [InputEventKey:3538]]]
+[InputEventKey:3537] False
+[InputEventKey:3538] False
+[Left margin left, [[InputEventKey:3539]]]
+[InputEventKey:3539] False
+[Left margin right, [[InputEventKey:3540]]]
+[InputEventKey:3540] False
+[Next box, [[InputEventKey:3541]]]
+[InputEventKey:3541] False
+[Next image, [[InputEventKey:3542], [InputEventMouseButton:3543]]]
+[InputEventKey:3542] False
+[InputEventMouseButton:3543] False
+[Prev box, [[InputEventKey:3544]]]
+[InputEventKey:3544] False
+[Prev image, [[InputEventKey:3545]]]
+[InputEventKey:3545] False
+[Right margin left, [[InputEventKey:3546]]]
+[InputEventKey:3546] False
+[Right margin right, [[InputEventKey:3547]]]
+[InputEventKey:3547] False
+[Save data, [[InputEventKey:3548], [InputEventMouseButton:3549]]]
+[InputEventKey:3548] False
+[InputEventMouseButton:3549] False
+[Top margin down, [[InputEventKey:3550]]]
+[InputEventKey:3550] False
+[Top margin up, [[InputEventKey:3551]]]
+[InputEventKey:3551] False
+[Zoom, [[InputEventKey:3552]]]
+[InputEventKey:3552] False
+loading
+Error loading folderdata/images
+ERROR: Error calling method from signal 'pressed': 'FileDialog(load_images.gd)::_on_load_pressed': Method not found..
+   at: emit_signal (core/object.cpp:1247) - Error calling method from signal 'pressed': 'FileDialog(load_images.gd)::_on_load_pressed': Method not found..
+Error loading image: C:/Users/Ari/Downloads/058.019.0414.pdf
+Error loading image: C:/Users/Ari/Downloads/117722760.zip
+Error loading image: C:/Users/Ari/Downloads/117722760_Tiputini_2025Aug18.mp4
+Error loading image: C:/Users/Ari/Downloads/117722760_Tiputini_2025Jul25.mp4
+Error loading image: C:/Users/Ari/Downloads/2024 - Form 1095-B - Health Coverage-1.pdf
+Error loading image: C:/Users/Ari/Downloads/2024 - Form 1095-B - Health Coverage.pdf
+Error loading image: C:/Users/Ari/Downloads/arduino-ide_2.3.6_Windows_64bit.exe
+Error loading image: C:/Users/Ari/Downloads/ARI GRELE_health-summary-07082025.pdf
+Error loading image: C:/Users/Ari/Downloads/Ari pictures for mom-20250617T195407Z-1-001.zip
+Error loading image: C:/Users/Ari/Downloads/Aussie_Beetles_Larval_Keys.pdf
+Error loading image: C:/Users/Ari/Downloads/autocom.py
+Error loading image: C:/Users/Ari/Downloads/AutoPollS_code_v1.zip
+Error loading image: C:/Users/Ari/Downloads/bats rotated.MP4
+Error loading image: C:/Users/Ari/Downloads/Biotropica - 2024 - Grandez‐Rios - Plant species richness not hygrothermal stress is the main predictor of gall‐inducing.pdf
+Error loading image: C:/Users/Ari/Downloads/cavestory.zip
+Error loading image: C:/Users/Ari/Downloads/DDrawCompat-v0.6.0.zip
+Error loading image: C:/Users/Ari/Downloads/DDrawCompat-v0.6.0.zip
