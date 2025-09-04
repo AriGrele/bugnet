@@ -12,7 +12,7 @@ format_json_for_models.py --img_src "../data/database_pipeline/good" --dst "../d
 
 Which will format annotations for training an Efficientnet, taking taxonomic information from the names of the images in the input folder. Additionally, if there are fewer than 100 images representing a taxon, all images of that taxon will be labeled as "unknown". No classes will be dropped due to low image counts, and no more than 2000 images will be included per taxon. 10 images per taxon will be split out into a testing set (seperate from the training and validation sets)
 
-## arguments
+## Arguments
 
 ```
 img_src      - Path to folder of images or folder of folders of images

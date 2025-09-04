@@ -11,6 +11,10 @@ There are additionally example batch files in each folder demonstrating the crea
 Running these files with the current parameters will produce a dataset of ~13,000 images of Lepidoptera, format these data for training a classification model, train a classification model with ~28 species, and use this model to classify insects in an example camera trap image.
 
 ## Folders
+### Annotation_pipeline
+
+Contains software for annotating images with bounding box data for training new localization models and taxonomic data for training and validating classification models. 
+
 ### Database_pipeline
 
 Contains scripts for scraping data and images from GBIF. The pipeline can be set to download GBIF datasets only, images only, or both in sequence. Data can be filtered to include specific insect orders, image licenses, or exclude specific insect families. Images can be stored as the entire image file, or individual insects can be cropped from the downloaded images. Regardless, all images are passed through a quality filter to remove e.g. blurry images, images of larvae, and other low-quality data.
@@ -27,5 +31,8 @@ Contains a script for taking in camera trap images, cropping, and classifying in
 
 Contains a script for turning the raw class confidences output by the processing pipeline into useable predictions at each taxonomic level. This folder additionally contains helper functions for extracting datetime information from images and size estimates from cropped insects, which can be used as covariates in analyses. 
 
+### Data
+
+Input and output data storage across pipelines. Currently contains a small number of example images and image models. 
 
 
