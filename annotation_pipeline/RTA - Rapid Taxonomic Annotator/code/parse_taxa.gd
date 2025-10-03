@@ -14,7 +14,7 @@ func search(text):
 		textform.create_labels.call_deferred(results) #update results text
 
 func parse_search(text): #for a given string run an sql query and format results
-	if text.length()>2: #ignore inputs with <=2 chars as search takes >1 second
+	if text.length()>0: #ignore inputs with <=2 chars as search takes >1 second
 		var thread
 		thread=Thread.new()
 		thread.start(search.bind(text))
@@ -23,7 +23,7 @@ func parse_search(text): #for a given string run an sql query and format results
 		textform.create_labels([]) #clear results text if no search performed
 
 func dbsearch(text,n=50): #for given search text and number of results
-	db.query('SELECT * FROM taxa WHERE taxon LIKE "'+text+'%" ORDER BY rank DESC, taxon ASC') #search names containing string and order by taxonopmic rank, prefering higher rank
+	db.query('SELECT * FROM taxa WHERE taxon LIKE "'+text+'%" ORDER BY rank DESC, taxon ASC LIMIT '+str(n)) #search names containing string and order by taxonopmic rank, prefering higher rank
 	
 	var output=[] #holder for results text array
 	for i in range(0,min(n,db.query_result.size())): #only return the first n results, or db.size results if fewer than n results
