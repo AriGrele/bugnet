@@ -1,4 +1,4 @@
-# Web scraping
+# Image processing
 
 ## process_images.py
 
