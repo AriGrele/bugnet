@@ -14,7 +14,6 @@ import wand.image
 import sys
 import numpy as np
 
-from uniplot import plot_to_string                                              #plotting in terminal
 from exif    import Image
 
 sys.path.append("..")                                                           #to load classes from higher dir. Silly, but makes certain aspects of the code easier down the line than other package based methods
