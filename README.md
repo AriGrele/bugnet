@@ -11,7 +11,7 @@ There are additionally example batch files in each folder demonstrating the crea
 Running these files with the current parameters will produce a dataset of ~13,000 images of Lepidoptera, format these data for training a classification model, train a classification model with ~28 species, and use this model to classify insects in an example camera trap image.
 
 Training, deployment, and scraping scripts will run using Python 3.X on CPU or NVIDIA GPU. 
-Running on GPU requires Pytorch ([https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/)) and the corresponding version of the CUDA Toolkit ([https://developer.nvidia.com/cuda-downloads](https://developer.nvidia.com/cuda-downloads)). Note that the version of CUDA you install will depend on what software your GPU can support; Misalignments between GPU model, CUDA version, and Pytorch version will result in errors.
+Running on GPU requires a Pytorch with GPU support ([https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/)) and the corresponding version of the CUDA Toolkit ([https://developer.nvidia.com/cuda-downloads](https://developer.nvidia.com/cuda-downloads)). Note that the version of CUDA you install will depend on what software your GPU can support; Misalignments between GPU model, CUDA version, and Pytorch version will result in errors.
 Annotation software requires Windows 10 or higher. 
 
 ## Folders
